@@ -1,0 +1,68 @@
+.TH PORTCHECK 1 "February 2026" "portcheck 0.1.0" "User Commands"
+.SH NAME
+portcheck \- check and kill processes by port
+.SH SYNOPSIS
+.B portcheck
+\fIPORT\fR
+[\fB\-\-kill\fR|\fB\-k\fR]
+.br
+.B portcheck
+\fB\-\-list\fR
+[\fB\-\-all\fR]
+.br
+.B portcheck
+[\fB\-h\fR|\fB\-\-help\fR|\fB\-v\fR|\fB\-\-version\fR]
+.SH DESCRIPTION
+.B portcheck
+shows which process is using a given port, and optionally kills it.
+It uses
+.BR lsof (1)
+to query open connections.
+.SH OPTIONS
+.TP
+.B \fIPORT\fR
+Show the process using the specified port number (1\(en65535).
+.TP
+.B \fIPORT\fR \-\-kill
+Kill the process using the port after interactive confirmation.
+.TP
+.B \fIPORT\fR \-k
+Kill the process immediately without confirmation.
+.TP
+.B \-\-list, \-l
+List all ports currently in LISTEN state.
+.TP
+.B \-\-list \-\-all
+List all open network connections (not just LISTEN).
+.TP
+.B \-h, \-\-help
+Show help message and exit.
+.TP
+.B \-v, \-\-version
+Show version information and exit.
+.SH EXAMPLES
+.TP
+Show process on port 3000:
+.B portcheck 3000
+.TP
+Kill process on port 8080 with confirmation:
+.B portcheck 8080 \-\-kill
+.TP
+Kill process on port 5432 immediately:
+.B portcheck 5432 \-k
+.TP
+List all listening ports:
+.B portcheck \-\-list
+.SH EXIT STATUS
+.TP
+.B 0
+Success.
+.TP
+.B 1
+Error occurred (port not found, kill failed, invalid argument, etc.).
+.SH SEE ALSO
+.BR lsof (1),
+.BR kill (1),
+.BR ms (1)
+.SH AUTHOR
+nulLeeKH <nulleekh@gmail.com>
