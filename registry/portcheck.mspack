@@ -1,0 +1,20 @@
+# portcheck.mspack - Package Manifest
+# Format: type|field1|field2|...
+
+# Package metadata
+name|portcheck
+description|Check and kill processes by port
+author|nulLeeKH <nulleekh@gmail.com>
+license|MIT
+license_url|https://github.com/magic-scripts/portcheck/blob/main/LICENSE
+repo_url|https://github.com/magic-scripts/portcheck
+issues_url|https://github.com/magic-scripts/portcheck/issues
+category|utility
+stability|beta
+min_ms_version|0.0.1
+
+# Version file link
+msver_url|https://raw.githubusercontent.com/magic-scripts/portcheck/main/registry/portcheck.msver
+
+# Configuration keys
+config|PORTCHECK_OPTION|default|Default option value|settings|portcheck
