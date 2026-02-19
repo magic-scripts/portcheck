@@ -21,7 +21,9 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 show_help() {
-    printf "%b\n" "${CYAN}${SCRIPT_NAME} v${MS_INSTALLED_VERSION:-$VERSION}${NC}"
+    _ver="${MS_INSTALLED_VERSION:-$VERSION}"
+    [ "$_ver" = "dev" ] && _ver_fmt="$_ver" || _ver_fmt="v${_ver}"
+    printf "%b\n" "${CYAN}${SCRIPT_NAME} ${_ver_fmt}${NC}"
     printf "Check and manage processes using specific ports\n\n"
     printf "Usage:\n"
     printf "  %b\n" "${CYAN}${SCRIPT_NAME} <port>${NC}              Show process using the port"
@@ -37,7 +39,12 @@ show_help() {
 }
 
 show_version() {
-    printf "%s v%s\n" "$SCRIPT_NAME" "${MS_INSTALLED_VERSION:-$VERSION}"
+    _ver="${MS_INSTALLED_VERSION:-$VERSION}"
+    if [ "$_ver" = "dev" ]; then
+        printf "%s %s\n" "$SCRIPT_NAME" "$_ver"
+    else
+        printf "%s v%s\n" "$SCRIPT_NAME" "$_ver"
+    fi
 }
 
 # Check if lsof is available
